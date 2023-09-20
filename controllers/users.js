@@ -17,11 +17,11 @@ export const getAllUsers = async (req, res) => {
 export const updateProfile = async (req, res) => {
     const { id: _id } = req.params;
     const { name, about, tags } = req.body;
-
+//no need of below code
     if (!mongoose.Types.ObjectId.isValid(_id)) {
         return res.status(404).send('question unavailable...');
     }
-
+//no need of above code
     try {
         const updatedProfile = await users.findByIdAndUpdate(_id, { $set: { 'name': name, 'about': about, 'tags': tags } }, { new: true })
         res.status(200).json(updatedProfile)
